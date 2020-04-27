@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <style>
+    #fairy-image-old {
+      width: 44px;
+      height: 46px;
+      background-image: url("great-fairy.png");
+      background-repeat: no-repeat;
+      background-size: 714px 918px;
+      background-position: -5px -385px;
+    }
+  </style>
+  <body bgcolor="#98fb98">
+    <audio loop id="fairy">
+      <source src="1-16%20Fairy%20Fountain.mp3" type="audio/mpeg" />
+    </audio>
+
+    <audio loop id="fairy-low">
+      <source src="2-19%20Fairy%20Fountain%20(Low).mp3" type="audio/mpeg" />
+    </audio>
+
+    <button id="play">PLAY</button>
+    <button id="toggle">Change</button>
+
+    <canvas style="border: 1px solid black" id="fairy-image"></canvas>
+    <script>
+      var whiteFaity = 385;
+      var baclFairy = 671;
+      var dude = null;
+
+      function magicCanvas(magicY) {
+        if (dude) {
+          clearInterval(dude);
+          dude = null;
+        }
+
+        var canvas = document.getElementById("fairy-image");
+        canvas.width = 44;
+        canvas.height = 53;
+
+        var context = canvas.getContext("2d");
+
+        var fairy = new Image();
+        fairy.onload = function() {
+          var some = 5;
+          dude = setInterval(function() {
+            if (some <= 44 * 15) {
+              some += 44;
+            } else {
+              some = 5;
+            }
+
+            // stepts to remove
+            var buffer = document.createElement("canvas");
+            var bufferctx = buffer.getContext("2d");
+            bufferctx.drawImage(fairy, some, magicY, 44, 53, 0, 7, 44, 53);
+            var imageData = bufferctx.getImageData(
+              0,
+              0,
+              buffer.width,
+              buffer.height
+            );
+            var data = imageData.data;
+
+            var removeBlack = function() {
+              for (var i = 0; i < data.length; i += 4) {
+                if (
+                  data[i] === 185 &&
+                  data[i + 1] === 128 &&
+                  data[i + 2] === 255
+                ) {
+                  data[i + 3] = 0; // alpha
+                }
+              }
+              // context.putImageData(imageData, 0, 0);
+              context.putImageData(imageData, 0, 0);
+            };
+            removeBlack();
+
+            // context.drawImage(fairy, some, 385, 44, 46, 0, 0, 44, 46);∂
+          }, 100);
+        };
+        fairy.src = "great-fairy.png";
+      }
+
+      function deactivateLightFairy() {
+        if (dude) {
+          clearInterval(dude);
+          dude = null;
+        }
+
+        var canvas = document.getElementById("fairy-image");
+        canvas.width = 44;
+        canvas.height = 53;
+
+        var context = canvas.getContext("2d");
+
+        var fairy = new Image();
+        fairy.onload = function() {
+          var some = 5;
+          dude = setInterval(function() {
+            if (some <= 44 * 11) {
+              some += 44;
+            } else {
+              activeBlackFairy();
+            }
+
+            // stepts to remove
+            var buffer = document.createElement("canvas");
+            var bufferctx = buffer.getContext("2d");
+            bufferctx.drawImage(fairy, some, 454, 44, 53, 0, 4, 44, 53);
+            var imageData = bufferctx.getImageData(
+              0,
+              0,
+              buffer.width,
+              buffer.height
+            );
+            var data = imageData.data;
+
+            var removeBlack = function() {
+              for (var i = 0; i < data.length; i += 4) {
+                if (
+                  data[i] === 185 &&
+                  data[i + 1] === 128 &&
+                  data[i + 2] === 255
+                ) {
+                  data[i + 3] = 0; // alpha
+                }
+              }
+              // context.putImageData(imageData, 0, 0);
+              context.putImageData(imageData, 0, 0);
+            };
+            removeBlack();
+
+            // context.drawImage(fairy, some, 385, 44, 46, 0, 0, 44, 46);∂
+          }, 100);
+        };
+        fairy.src = "great-fairy.png";
+      }
+
+      function activeLightFairy() {
+        if (dude) {
+          clearInterval(dude);
+          dude = null;
+        }
+
+        var canvas = document.getElementById("fairy-image");
+        canvas.width = 44;
+        canvas.height = 53;
+
+        var context = canvas.getContext("2d");
+
+        var fairy = new Image();
+        fairy.onload = function() {
+          var some = 5;
+          dude = setInterval(function() {
+            if (some <= 44 * 8) {
+              some += 44;
+            } else {
+              magicCanvas(whiteFaity);
+            }
+
+            // stepts to remove
+            var buffer = document.createElement("canvas");
+            var bufferctx = buffer.getContext("2d");
+            bufferctx.drawImage(fairy, some, 309, 44, 53, 0, 0, 44, 53);
+            var imageData = bufferctx.getImageData(
+              0,
+              0,
+              buffer.width,
+              buffer.height
+            );
+            var data = imageData.data;
+
+            var removeBlack = function() {
+              for (var i = 0; i < data.length; i += 4) {
+                if (
+                  data[i] === 185 &&
+                  data[i + 1] === 128 &&
+                  data[i + 2] === 255
+                ) {
+                  data[i + 3] = 0; // alpha
+                }
+              }
+              // context.putImageData(imageData, 0, 0);
+              context.putImageData(imageData, 0, 0);
+            };
+            removeBlack();
+
+            // context.drawImage(fairy, some, 385, 44, 46, 0, 0, 44, 46);∂
+          }, 100);
+        };
+        fairy.src = "great-fairy.png";
+      }
+
+      function deactivateBlackFairy() {
+        if (dude) {
+          clearInterval(dude);
+          dude = null;
+        }
+
+        var canvas = document.getElementById("fairy-image");
+        canvas.width = 44;
+        canvas.height = 53;
+
+        var context = canvas.getContext("2d");
+
+        var fairy = new Image();
+        fairy.onload = function() {
+          var some = 5;
+          dude = setInterval(function() {
+            if (some <= 44 * 11) {
+              some += 44;
+            } else {
+              activeLightFairy();
+            }
+
+            // stepts to remove
+            var buffer = document.createElement("canvas");
+            var bufferctx = buffer.getContext("2d");
+            bufferctx.drawImage(fairy, some, 740, 44, 53, 0, 4, 44, 53);
+            var imageData = bufferctx.getImageData(
+              0,
+              0,
+              buffer.width,
+              buffer.height
+            );
+            var data = imageData.data;
+
+            var removeBlack = function() {
+              for (var i = 0; i < data.length; i += 4) {
+                if (
+                  data[i] === 185 &&
+                  data[i + 1] === 128 &&
+                  data[i + 2] === 255
+                ) {
+                  data[i + 3] = 0; // alpha
+                }
+              }
+              // context.putImageData(imageData, 0, 0);
+              context.putImageData(imageData, 0, 0);
+            };
+            removeBlack();
+
+            // context.drawImage(fairy, some, 385, 44, 46, 0, 0, 44, 46);∂
+          }, 100);
+        };
+        fairy.src = "great-fairy.png";
+      }
+
+      function activeBlackFairy() {
+        if (dude) {
+          clearInterval(dude);
+          dude = null;
+        }
+
+        var canvas = document.getElementById("fairy-image");
+        canvas.width = 44;
+        canvas.height = 53;
+
+        var context = canvas.getContext("2d");
+
+        var fairy = new Image();
+        fairy.onload = function() {
+          var some = 5;
+          dude = setInterval(function() {
+            if (some <= 44 * 8) {
+              some += 44;
+            } else {
+              magicCanvas(baclFairy);
+            }
+
+            // stepts to remove
+            var buffer = document.createElement("canvas");
+            var bufferctx = buffer.getContext("2d");
+            bufferctx.drawImage(fairy, some, 595, 44, 53, 0, 0, 44, 53);
+            var imageData = bufferctx.getImageData(
+              0,
+              0,
+              buffer.width,
+              buffer.height
+            );
+            var data = imageData.data;
+
+            var removeBlack = function() {
+              for (var i = 0; i < data.length; i += 4) {
+                if (
+                  data[i] === 185 &&
+                  data[i + 1] === 128 &&
+                  data[i + 2] === 255
+                ) {
+                  data[i + 3] = 0; // alpha
+                }
+              }
+              // context.putImageData(imageData, 0, 0);
+              context.putImageData(imageData, 0, 0);
+            };
+            removeBlack();
+
+            // context.drawImage(fairy, some, 385, 44, 46, 0, 0, 44, 46);∂
+          }, 100);
+        };
+        fairy.src = "great-fairy.png";
+      }
+
+      document.addEventListener("DOMContentLoaded", function(event) {
+        const playButton = document.getElementById("play");
+        const toggleButton = document.getElementById("toggle");
+        const fairyAudio = document.getElementById("fairy");
+        const fairyLowAudio = document.getElementById("fairy-low");
+
+        let active = true;
+
+        playButton.addEventListener("click", function(event) {
+          fairyAudio.play();
+          fairyLowAudio.play();
+          fairyLowAudio.volume = 0;
+        });
+
+        toggleButton.addEventListener("click", function(event) {
+          if (active) {
+            fairyAudio.volume = 0;
+            fairyLowAudio.volume = 1;
+            deactivateLightFairy();
+            // activeBlackFairy()
+          } else {
+            fairyAudio.volume = 1;
+            fairyLowAudio.volume = 0;
+            deactivateBlackFairy();
+            // activeLightFairy();
+            // magicCanvas(whiteFaity);
+          }
+
+          active = !active;
+        });
+
+        magicCanvas(whiteFaity);
+      });
+    </script>
+  </body>
+</html>
